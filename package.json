@@ -13,9 +13,11 @@
     "lint": "run-s \"lint:*\"",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "test:unit": "vitest run"
   },
   "dependencies": {
+    "vitest": "^4.1.11",
     "vue": "^3.5.42",
     "vue-router": "^5.3.1"
   },
