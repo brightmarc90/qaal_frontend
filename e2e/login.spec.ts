@@ -22,4 +22,27 @@ test.describe('Authentification', () => {
       }),
     ).toBeVisible()
   })
+
+  test('TC-AUTH-002 - connexion avec un mot de passe incorrect', async ({ page }) => {
+    await page.goto('/login')
+
+    await page.getByLabel('Email').fill('marc@test.fr')
+    await page.getByLabel('Mot de passe').fill('MauvaisPassword')
+
+    await page.getByRole('button', { name: 'Se connecter' }).click()
+
+    await expect(page).toHaveURL(/login/)
+
+    await expect(page.getByRole('alert')).toHaveText('Identifiants incorrects')
+  })
+
+  test('TC-AUTH-003 - accès direct au dashboard interdit sans authentification', async ({
+    page,
+  }) => {
+    await page.goto('/dashboard')
+
+    await expect(page).toHaveURL(/login/)
+
+    await expect(page.getByRole('heading', { name: 'Espace Assuré' })).toBeVisible()
+  })
 })
