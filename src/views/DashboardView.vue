@@ -21,7 +21,12 @@ const logout = () => {
     <main class="dashboard-content">
       <header class="page-heading">
         <p class="eyebrow">Mon tableau de bord</p>
-        <h1>Bonjour Marc</h1>
+        <div class="heading-actions">
+          <h1>Bonjour Marc</h1>
+          <button class="new-claim-button" @click="router.push('/claims/new')">
+            <span aria-hidden="true">+</span> Déclarer un sinistre
+          </button>
+        </div>
         <p>Retrouvez ici vos sinistres et leur état d’avancement.</p>
       </header>
 
@@ -152,6 +157,39 @@ const logout = () => {
   font-weight: 700;
   letter-spacing: 1.8px;
   text-transform: uppercase;
+}
+
+.heading-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.new-claim-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: #204c3e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.new-claim-button span {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.new-claim-button:hover {
+  background: #153a2e;
+  box-shadow: 0 4px 12px #204c3420;
 }
 
 h1 {
@@ -326,6 +364,10 @@ h3 {
 }
 
 @media (max-width: 600px) {
+  .new-claim-button {
+    width: 100%;
+  }
+
   .topbar-content {
     padding: 16px;
     gap: 12px;
