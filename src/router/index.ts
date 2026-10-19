@@ -1,5 +1,6 @@
 import DashboardView from '@/views/DashboardView.vue'
 import LoginView from '@/views/LoginView.vue'
+import NewClaimView from '@/views/NewClaimView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -18,6 +19,14 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: DashboardView,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/claims/new',
+      name: 'new-claim',
+      component: NewClaimView,
       meta: {
         requiresAuth: true,
       },
